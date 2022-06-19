@@ -5,3 +5,5 @@ This repo is dedicated to store and track my progress in the __[Linear Algebra c
 #### You need to learn linear algebra!
 
 Linear algebra is perhaps the most important branch of mathematics for computational sciences, including machine learning, AI, data science, statistics, simulations, computer graphics, multivariate analyses, matrix decompositions, signal processing, and so on.
+
+![alt text](https://github.com/murilogustineli/Linear-Algebra/blob/main/linear-algebra.jpg)
