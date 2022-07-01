@@ -100,10 +100,6 @@ def main(sizes):
     A = np.round(np.random.randn(m, n), 2)
     B = np.round(np.random.randn(n, m), 2)
 
-    # Define sizes
-    # sizes = [1000, 10000, 25000, 50000, 100000]
-    # sizes = [i for i in range(1000, 51000, 5000)]
-
     # Compute run time
     loop_run = compute_time(func=matrix_mult_loop, A=A, B=B, sizes=sizes)
     numpy_run = compute_time(func=np_matrix_mult, A=A, B=B, sizes=sizes)
