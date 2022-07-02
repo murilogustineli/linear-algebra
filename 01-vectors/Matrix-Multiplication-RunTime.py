@@ -28,9 +28,6 @@ def matrix_mult_loop(a_matrix, b_matrix):
 def np_matrix_mult(a_matrix: np.array, b_matrix: np.array):
     """
     Using NumPy to perform matrix multiplication
-    :type a_matrix: np.array
-    :type b_matrix: np.array
-
     """
     return np.round(np.matmul(a_matrix, b_matrix))
 
