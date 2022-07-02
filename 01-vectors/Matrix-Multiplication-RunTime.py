@@ -5,6 +5,7 @@ for loop vs NumPy vs Tensor
 
 # Import libraries
 import time
+from typing import Union
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
@@ -41,7 +42,10 @@ def tensor_matrix_mult(a_matrix: torch.Tensor, b_matrix: torch.Tensor) -> torch.
 
 
 # Compute run time
-def compute_time(func, a_matrix: [np.ndarray, torch.Tensor], b_matrix: [np.ndarray, torch.Tensor], sizes: list) -> list:
+def compute_time(func,
+                 a_matrix: Union[np.ndarray, torch.Tensor],
+                 b_matrix: Union[np.ndarray, torch.Tensor],
+                 sizes: list) -> list:
     """
     Function that tracks run time for each multiplication method
     """
@@ -127,4 +131,4 @@ def main(sizes: list) -> tuple[list, list, list]:
 #     print_results(loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
 
 #     # Plot graph
-#     # plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
+#     plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
