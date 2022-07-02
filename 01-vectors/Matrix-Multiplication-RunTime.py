@@ -15,9 +15,6 @@ import seaborn as sns
 def matrix_mult_loop(a_matrix: np.ndarray, b_matrix: np.ndarray) -> np.ndarray:
     """
     Using for loops to perform matrix multiplication
-    :param a_matrix: np.ndarray
-    :param b_matrix: np.ndarray
-    :return: np.ndarray
     """
     matrix = np.zeros((len(a_matrix[0]), len(b_matrix[1])))
     for i in range(len(a_matrix)):
@@ -31,9 +28,6 @@ def matrix_mult_loop(a_matrix: np.ndarray, b_matrix: np.ndarray) -> np.ndarray:
 def np_matrix_mult(a_matrix: np.array, b_matrix: np.array) -> np.ndarray:
     """
     Using NumPy to perform matrix multiplication
-    :param a_matrix: np.ndarray
-    :param b_matrix: np.ndarray
-    :return: np.ndarray
     """
     return np.round(np.matmul(a_matrix, b_matrix))
 
@@ -42,9 +36,6 @@ def np_matrix_mult(a_matrix: np.array, b_matrix: np.array) -> np.ndarray:
 def tensor_matrix_mult(a_matrix: torch.Tensor, b_matrix: torch.Tensor) -> torch.Tensor:
     """
     Using PyTorch tensors to perform matrix multiplication
-    :param a_matrix: torch.Tensor
-    :param b_matrix: torch.Tensor
-    :return: torch.Tensor
     """
     return torch.round(torch.matmul(a_matrix, b_matrix))
 
@@ -53,11 +44,6 @@ def tensor_matrix_mult(a_matrix: torch.Tensor, b_matrix: torch.Tensor) -> torch.
 def compute_time(func, a_matrix: [np.ndarray, torch.Tensor], b_matrix: [np.ndarray, torch.Tensor], sizes: list) -> list:
     """
     Function that tracks run time for each multiplication method
-    :param func: different functions that compute matrix multiplication
-    :param a_matrix: np.ndarray
-    :param b_matrix: np.ndarray
-    :param sizes: list
-    :return: list
     """
     # Run time list
     run_time = []
@@ -78,14 +64,10 @@ def compute_time(func, a_matrix: [np.ndarray, torch.Tensor], b_matrix: [np.ndarr
 
 
 # Plot Linear Regression graph
-def plot_graph(sizes, loop_var, numpy_var, tensor_var):
+def plot_graph(sizes: list, loop_var: list, numpy_var: list, tensor_var: list):
     """
     Function that plots a graph to compare run time performance between loops, numpy and tensors.
-    :param sizes: list
-    :param loop_var: list
-    :param numpy_var: list
-    :param tensor_var: list
-    :return: graph
+    :return: plt graph
     """
     plt.figure(figsize=(10, 6), dpi=600)
     plt.title('Run Time performance')
@@ -145,4 +127,4 @@ def main(sizes):
 #     print_results(loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
 
 #     # Plot graph
-#     # plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
+#     plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
