@@ -100,7 +100,7 @@ def main(sizes: list) -> tuple[list, list, list]:
     Function that performs run time computations
     :return: tuple[loop_run, numpy_run, tensor_run]
     """
-    # Define matrices
+    # Define matrix size
     m = 10
     n = 10
     # NumPy arrays
