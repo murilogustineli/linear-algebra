@@ -50,7 +50,7 @@ def tensor_matrix_mult(a_matrix: torch.Tensor, b_matrix: torch.Tensor) -> torch.
 
 
 # Compute run time
-def compute_time(func, a_matrix: np.ndarray, b_matrix: np.ndarray, sizes: list) -> list:
+def compute_time(func, a_matrix: [np.ndarray, torch.Tensor], b_matrix: [np.ndarray, torch.Tensor], sizes: list) -> list:
     """
     Function that tracks run time for each multiplication method
     :param func: different functions that compute matrix multiplication
@@ -67,7 +67,8 @@ def compute_time(func, a_matrix: np.ndarray, b_matrix: np.ndarray, sizes: list) 
 
         # Perform matrix multiplication
         for _ in range(s):
-            run = func(a_matrix, b_matrix)
+            # run = func(a_matrix, b_matrix)
+            func(a_matrix, b_matrix)
 
         # End run
         end = time.time()
@@ -116,13 +117,17 @@ def main(sizes):
     # Define matrices
     m = 10
     n = 10
+    # NumPy arrays
     A = np.round(np.random.randn(m, n), 2)
     B = np.round(np.random.randn(n, m), 2)
+    # PyTorch tensors
+    A_tensor = torch.tensor(A)
+    B_tensor = torch.tensor(B)
 
     # Compute run time
     loop_var = compute_time(func=matrix_mult_loop, a_matrix=A, b_matrix=B, sizes=sizes)
     numpy_var = compute_time(func=np_matrix_mult, a_matrix=A, b_matrix=B, sizes=sizes)
-    tensor_var = compute_time(func=tensor_matrix_mult, a_matrix=torch.tensor(A), b_matrix=torch.tensor(B), sizes=sizes)
+    tensor_var = compute_time(func=tensor_matrix_mult, a_matrix=A_tensor, b_matrix=B_tensor, sizes=sizes)
 
     return loop_var, numpy_var, tensor_var
 
