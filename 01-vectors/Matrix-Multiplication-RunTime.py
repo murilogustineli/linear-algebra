@@ -12,36 +12,39 @@ import seaborn as sns
 
 
 # Compute matrix multiplication using for loops
-def matrix_mult_loop(A, B):
+def matrix_mult_loop(a_matrix, b_matrix):
     """
     Using for loops to perform matrix multiplication
     """
-    matrix = np.zeros((len(A[0]), len(B[1])))
-    for i in range(len(A)):
-        for j in range(len(B[i])):
-            matrix[i][j] = sum(A[i, :] * B[:, j])
+    matrix = np.zeros((len(a_matrix[0]), len(b_matrix[1])))
+    for i in range(len(a_matrix)):
+        for j in range(len(b_matrix[i])):
+            matrix[i][j] = sum(a_matrix[i, :] * b_matrix[:, j])
 
     return np.round(matrix, 2)
 
 
 # Using NumPy
-def np_matrix_mult(A, B):
+def np_matrix_mult(a_matrix: np.array, b_matrix: np.array):
     """
     Using NumPy to perform matrix multiplication
+    :type a_matrix: np.array
+    :type b_matrix: np.array
+
     """
-    return np.round(np.matmul(A, B))
+    return np.round(np.matmul(a_matrix, b_matrix))
 
 
 # Using PyTorch Tensor
-def tensor_matrix_mult(A, B):
+def tensor_matrix_mult(a_matrix, b_matrix):
     """
     Using PyTorch tensors to perform matrix multiplication
     """
-    return torch.round(torch.matmul(A, B))
+    return torch.round(torch.matmul(a_matrix, b_matrix))
 
 
 # Compute run time
-def compute_time(func, A, B, sizes):
+def compute_time(func, a_matrix, b_matrix, sizes):
     """
     Function that tracks run time for each multiplication method
     """
@@ -53,7 +56,7 @@ def compute_time(func, A, B, sizes):
 
         # Perform matrix multiplication
         for _ in range(s):
-            run = func(A, B)
+            run = func(a_matrix, b_matrix)
 
         # End run
         end = time.time()
@@ -101,20 +104,24 @@ def main(sizes):
     B = np.round(np.random.randn(n, m), 2)
 
     # Compute run time
-    loop_run = compute_time(func=matrix_mult_loop, A=A, B=B, sizes=sizes)
-    numpy_run = compute_time(func=np_matrix_mult, A=A, B=B, sizes=sizes)
-    tensor_run = compute_time(func=tensor_matrix_mult, A=torch.tensor(A), B=torch.tensor(B), sizes=sizes)
+    loop_var = compute_time(func=matrix_mult_loop, a_matrix=A, b_matrix=B, sizes=sizes)
+    numpy_var = compute_time(func=np_matrix_mult, a_matrix=A, b_matrix=B, sizes=sizes)
+    tensor_var = compute_time(func=tensor_matrix_mult, a_matrix=torch.tensor(A), b_matrix=torch.tensor(B), sizes=sizes)
 
-    return loop_run, numpy_run, tensor_run
+    return loop_var, numpy_var, tensor_var
 
 
 # # Call main function
 # if __name__ == '__main__':
-#     iterations = [i for i in range(0, 51000, 5000)]
+#     # Define iteration sizes
+#     # iterations = [i for i in range(0, 51000, 5000)]
+#     iterations = [1000]
+
+#     # Compute run-time performance
 #     loop_run, numpy_run, tensor_run = main(sizes=iterations)
 
 #     # Print results
 #     print_results(loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
 
 #     # Plot graph
-#     plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
+#     # plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
