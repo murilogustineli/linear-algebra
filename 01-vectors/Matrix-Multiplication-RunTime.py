@@ -12,9 +12,12 @@ import seaborn as sns
 
 
 # Compute matrix multiplication using for loops
-def matrix_mult_loop(a_matrix, b_matrix):
+def matrix_mult_loop(a_matrix: np.ndarray, b_matrix: np.ndarray) -> np.ndarray:
     """
     Using for loops to perform matrix multiplication
+    :param a_matrix: np.ndarray
+    :param b_matrix: np.ndarray
+    :return: np.ndarray
     """
     matrix = np.zeros((len(a_matrix[0]), len(b_matrix[1])))
     for i in range(len(a_matrix)):
@@ -25,25 +28,36 @@ def matrix_mult_loop(a_matrix, b_matrix):
 
 
 # Using NumPy
-def np_matrix_mult(a_matrix: np.array, b_matrix: np.array):
+def np_matrix_mult(a_matrix: np.array, b_matrix: np.array) -> np.ndarray:
     """
     Using NumPy to perform matrix multiplication
+    :param a_matrix: np.ndarray
+    :param b_matrix: np.ndarray
+    :return: np.ndarray
     """
     return np.round(np.matmul(a_matrix, b_matrix))
 
 
 # Using PyTorch Tensor
-def tensor_matrix_mult(a_matrix, b_matrix):
+def tensor_matrix_mult(a_matrix: torch.Tensor, b_matrix: torch.Tensor) -> torch.Tensor:
     """
     Using PyTorch tensors to perform matrix multiplication
+    :param a_matrix: torch.Tensor
+    :param b_matrix: torch.Tensor
+    :return: torch.Tensor
     """
     return torch.round(torch.matmul(a_matrix, b_matrix))
 
 
 # Compute run time
-def compute_time(func, a_matrix, b_matrix, sizes):
+def compute_time(func, a_matrix: np.ndarray, b_matrix: np.ndarray, sizes: list) -> list:
     """
     Function that tracks run time for each multiplication method
+    :param func: different functions that compute matrix multiplication
+    :param a_matrix: np.ndarray
+    :param b_matrix: np.ndarray
+    :param sizes: list
+    :return: list
     """
     # Run time list
     run_time = []
@@ -66,6 +80,11 @@ def compute_time(func, a_matrix, b_matrix, sizes):
 def plot_graph(sizes, loop_var, numpy_var, tensor_var):
     """
     Function that plots a graph to compare run time performance between loops, numpy and tensors.
+    :param sizes: list
+    :param loop_var: list
+    :param numpy_var: list
+    :param tensor_var: list
+    :return: graph
     """
     plt.figure(figsize=(10, 6), dpi=600)
     plt.title('Run Time performance')
@@ -76,7 +95,7 @@ def plot_graph(sizes, loop_var, numpy_var, tensor_var):
     sns.lineplot(x=sizes, y=tensor_var, color='red', label='Tensor run time', marker='X')
     plt.grid(color='blue', linestyle='--', linewidth=1, alpha=0.2)
     plt.legend(loc='upper left')
-    # plt.savefig('Linear_Regression.jpg')
+    # plt.savefig('Matrix-Multiplication-RunTime.jpg')
     plt.show()
 
 
