@@ -91,10 +91,10 @@ def print_results(loop_var, numpy_var, tensor_var):
 
 
 # Main function
-def main(sizes):
+def main(sizes: list) -> tuple[list, list, list]:
     """
     Function that performs run time computations
-    return: loop_run, numpy_run, tensor_run
+    :return: tuple[loop_run, numpy_run, tensor_run]
     """
     # Define matrices
     m = 10
@@ -127,4 +127,4 @@ def main(sizes):
 #     print_results(loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
 
 #     # Plot graph
-#     plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
+#     # plot_graph(sizes=iterations, loop_var=loop_run, numpy_var=numpy_run, tensor_var=tensor_run)
