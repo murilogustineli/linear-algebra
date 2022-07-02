@@ -104,16 +104,16 @@ def main(sizes: list) -> tuple[list, list, list]:
     m = 10
     n = 10
     # NumPy arrays
-    A = np.round(np.random.randn(m, n), 2)
-    B = np.round(np.random.randn(n, m), 2)
+    a_matrix = np.round(np.random.randn(m, n), 2)
+    b_matrix = np.round(np.random.randn(n, m), 2)
     # PyTorch tensors
-    A_tensor = torch.tensor(A)
-    B_tensor = torch.tensor(B)
+    a_tensor = torch.tensor(a_matrix)
+    b_tensor = torch.tensor(b_matrix)
 
     # Compute run time
-    loop_var = compute_time(func=matrix_mult_loop, a_matrix=A, b_matrix=B, sizes=sizes)
-    numpy_var = compute_time(func=np_matrix_mult, a_matrix=A, b_matrix=B, sizes=sizes)
-    tensor_var = compute_time(func=tensor_matrix_mult, a_matrix=A_tensor, b_matrix=B_tensor, sizes=sizes)
+    loop_var = compute_time(func=matrix_mult_loop, a_matrix=a_matrix, b_matrix=b_matrix, sizes=sizes)
+    numpy_var = compute_time(func=np_matrix_mult, a_matrix=a_matrix, b_matrix=b_matrix, sizes=sizes)
+    tensor_var = compute_time(func=tensor_matrix_mult, a_matrix=a_tensor, b_matrix=b_tensor, sizes=sizes)
 
     return loop_var, numpy_var, tensor_var
 
