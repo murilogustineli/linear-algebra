@@ -87,7 +87,7 @@ def plot_graph(sizes: list, loop_var: list, numpy_var: list, tensor_var: list):
 
 
 # Function that prints the results
-def print_results(loop_var, numpy_var, tensor_var):
+def print_results(loop_var: list, numpy_var: list, tensor_var: list) -> None:
     # Print results
     print(f"Loop run time:    {loop_var}")
     print(f"NumPy run time:   {numpy_var}")
@@ -98,7 +98,6 @@ def print_results(loop_var, numpy_var, tensor_var):
 def main(sizes: list) -> tuple[list, list, list]:
     """
     Function that performs run time computations
-    :return: tuple[loop_run, numpy_run, tensor_run]
     """
     # Define matrix size
     m = 10
