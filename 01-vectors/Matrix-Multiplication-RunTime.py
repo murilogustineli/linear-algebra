@@ -68,7 +68,7 @@ def compute_time(func,
 
 
 # Plot Linear Regression graph
-def plot_graph(sizes: list, loop_var: list, numpy_var: list, tensor_var: list):
+def plot_graph(sizes: list, loop_var: list, numpy_var: list, tensor_var: list) -> None:
     """
     Function that plots a graph to compare run time performance between loops, numpy and tensors.
     :return: plt graph
